@@ -13,7 +13,7 @@ This project demonstrates core **Full Stack Development skills using Next.js**.
 Vercel Deployment:
 
 ```
-https://your-project.vercel.app
+https://vercel.com/tanoorkirans-projects/daily-learning-streak-tracker
 ```
 
 ---
