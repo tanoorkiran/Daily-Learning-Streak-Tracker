@@ -2,23 +2,31 @@
 
 import { useEffect, useState } from "react";
 import StudyButton from "@/components/StudyButton";
+import StreakCalendar from "@/components/StreakCalendar";
 import Link from "next/link";
 
 export default function Home() {
+
   const [stats, setStats] = useState({
     currentStreak: 0,
     totalDays: 0,
     lastStudyDate: "",
   });
 
-  const fetchStats = async () => {
+  const [history, setHistory] = useState<string[]>([]);
+
+  const fetchData = async () => {
     const res = await fetch("/api/streak");
     const data = await res.json();
     setStats(data);
+
+    const h = await fetch("/api/history");
+    const historyData = await h.json();
+    setHistory(historyData);
   };
 
   useEffect(() => {
-    fetchStats();
+    fetchData();
   }, []);
 
   return (
@@ -34,7 +42,8 @@ export default function Home() {
           Stay consistent. Build your learning streak.
         </p>
 
-        {/* Stats Box */}
+        {/* Stats */}
+
         <div className="space-y-3">
 
           <div className="flex justify-between bg-gray-50 p-3 rounded-lg">
@@ -56,7 +65,12 @@ export default function Home() {
 
         </div>
 
+        {/* Calendar */}
+
+        <StreakCalendar dates={history} />
+
         {/* Buttons */}
+
         <div className="mt-6 space-y-3">
 
           <StudyButton />
