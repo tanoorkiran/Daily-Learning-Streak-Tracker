@@ -8,7 +8,7 @@ export default function Home() {
   const [stats, setStats] = useState({
     currentStreak: 0,
     totalDays: 0,
-    lastStudyDate: ""
+    lastStudyDate: "",
   });
 
   const fetchStats = async () => {
@@ -22,40 +22,52 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
+    <main className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <h1 className="text-4xl font-bold mb-8 text-blue-600">
-        Daily Learning Streak Tracker
-      </h1>
+      <div className="bg-white w-[420px] p-8 rounded-2xl shadow-xl">
 
-      <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
+        <h1 className="text-3xl font-bold text-center text-gray-800">
+          📚 Daily Learning Tracker
+        </h1>
 
-        <div className="space-y-4 text-lg">
+        <p className="text-center text-gray-500 mt-2 mb-6">
+          Stay consistent. Build your learning streak.
+        </p>
 
-          <div className="flex justify-between">
-            <span className="font-semibold">🔥 Current Streak</span>
-            <span>{stats.currentStreak} days</span>
+        {/* Stats Box */}
+        <div className="space-y-3">
+
+          <div className="flex justify-between bg-gray-50 p-3 rounded-lg">
+            <span>🔥 Current Streak</span>
+            <span className="font-semibold">{stats.currentStreak}</span>
           </div>
 
-          <div className="flex justify-between">
-            <span className="font-semibold">📚 Total Study Days</span>
-            <span>{stats.totalDays}</span>
+          <div className="flex justify-between bg-gray-50 p-3 rounded-lg">
+            <span>📚 Total Study Days</span>
+            <span className="font-semibold">{stats.totalDays}</span>
           </div>
 
-          <div className="flex justify-between">
-            <span className="font-semibold">📅 Last Studied</span>
-            <span>{stats.lastStudyDate || "No record yet"}</span>
+          <div className="flex justify-between bg-gray-50 p-3 rounded-lg">
+            <span>📅 Last Studied</span>
+            <span className="font-semibold">
+              {stats.lastStudyDate || "None"}
+            </span>
           </div>
 
         </div>
 
-        <StudyButton />
+        {/* Buttons */}
+        <div className="mt-6 space-y-3">
 
-        <Link href="/history">
-          <button className="mt-4 w-full bg-gray-200 hover:bg-gray-300 p-3 rounded-lg">
-            View Study History
-          </button>
-        </Link>
+          <StudyButton />
+
+          <Link href="/history">
+            <button className="w-full bg-gray-200 hover:bg-gray-300 py-3 rounded-lg transition">
+              View Study History
+            </button>
+          </Link>
+
+        </div>
 
       </div>
 

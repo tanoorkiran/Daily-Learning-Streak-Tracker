@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function HistoryPage() {
-
   const [history, setHistory] = useState<string[]>([]);
 
   useEffect(() => {
@@ -14,31 +13,33 @@ export default function HistoryPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gray-100 p-10 flex flex-col items-center">
+    <main className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <h1 className="text-3xl font-bold mb-6 text-blue-600">
-        Study History
-      </h1>
+      <div className="bg-white w-[420px] p-8 rounded-2xl shadow-xl">
 
-      <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-md">
+        <h1 className="text-2xl font-bold text-center mb-6">
+          📅 Study History
+        </h1>
 
         {history.length === 0 ? (
-          <p className="text-gray-500">No study records yet.</p>
+          <p className="text-center text-gray-500 mb-6">
+            No study records yet.
+          </p>
         ) : (
-          <ul className="space-y-3">
+          <ul className="space-y-2 mb-6">
             {history.map((date, index) => (
               <li
                 key={index}
-                className="bg-gray-100 p-3 rounded-lg flex justify-between"
+                className="bg-gray-50 p-3 rounded-lg text-center"
               >
-                📅 <span>{date}</span>
+                {date}
               </li>
             ))}
           </ul>
         )}
 
         <Link href="/">
-          <button className="mt-6 w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600">
+          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition">
             Back to Dashboard
           </button>
         </Link>
