@@ -1,36 +1,268 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 Daily Learning Streak Tracker
 
-## Getting Started
+A simple full-stack web application that helps students stay consistent with their studies by tracking daily learning streaks.
 
-First, run the development server:
+The app allows users to mark when they studied for the day and automatically calculates their learning streak. It also keeps track of total study days and displays study history.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project demonstrates core **Full Stack Development skills using Next.js**.
+
+---
+
+# 🚀 Live Demo
+
+Vercel Deployment:
+
+```
+https://your-project.vercel.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📌 Project Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Dashboard
 
-## Learn More
+The home page displays:
 
-To learn more about Next.js, take a look at the following resources:
+* Current study streak
+* Total number of study days
+* Last studied date
+* Button to mark **"I Studied Today"**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Study Tracking
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+When the user clicks **I Studied Today**:
 
-## Deploy on Vercel
+* Today's date is recorded
+* The streak is updated
+* Duplicate entries for the same day are prevented
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If the user already marked the day, the system shows a message.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Streak Logic
+
+The streak follows these rules:
+
+* If the user studied yesterday and today → streak increases
+* If a day is missed → streak resets to 1
+
+Example:
+
+```
+10 March → Studied
+11 March → Studied
+12 March → Studied
+
+Streak = 3
+```
+
+If the user skips **13 March** and studies on **14 March**, the streak resets:
+
+```
+Streak = 1
+```
+
+### Study History
+
+A separate page displays all study dates in descending order (newest first).
+
+Example:
+
+```
+14 March 2026
+12 March 2026
+11 March 2026
+10 March 2026
+```
+
+### Streak Calendar
+
+A visual **30-day streak calendar** displays study activity similar to a contribution graph.
+
+* 🟩 Green → Studied
+* ⬜ Gray → Missed
+
+---
+
+# 🛠 Tech Stack
+
+Frontend and Backend are built using **Next.js (App Router)**.
+
+Main technologies used:
+
+* **Next.js**
+* **TypeScript**
+* **Tailwind CSS**
+* **Next.js API Routes**
+* **Local Storage / In-Memory Data**
+* **Vercel Deployment**
+
+---
+
+# 📂 Project Structure
+
+```
+app
+ ├ api
+ │   ├ study
+ │   ├ streak
+ │   ├ history
+ │
+ ├ history
+ │   └ page.tsx
+ │
+ ├ page.tsx
+
+components
+ ├ StudyButton.tsx
+ ├ StreakCalendar.tsx
+
+lib
+ ├ streakLogic.ts
+```
+
+---
+
+# ⚙️ API Endpoints
+
+### POST /api/study
+
+Marks today's study.
+
+```
+POST /api/study
+```
+
+Response:
+
+```
+{
+  message: "Study recorded successfully"
+}
+```
+
+---
+
+### GET /api/streak
+
+Returns streak information.
+
+```
+GET /api/streak
+```
+
+Response:
+
+```
+{
+  currentStreak: number,
+  totalDays: number,
+  lastStudyDate: string
+}
+```
+
+---
+
+### GET /api/history
+
+Returns list of study dates.
+
+```
+GET /api/history
+```
+
+Response:
+
+```
+[
+ "2026-03-14",
+ "2026-03-12",
+ "2026-03-11"
+]
+```
+
+---
+
+# 🧠 Business Rules
+
+The application enforces the following rules:
+
+1. Users cannot mark study twice in one day.
+2. Streak increases only if the previous day was studied.
+3. If a day is skipped, the streak resets.
+4. Study history stores all study dates.
+
+---
+
+# 🖥 Local Setup
+
+Clone the repository:
+
+```
+git clone https://github.com/yourusername/daily-learning-streak-tracker
+```
+
+Go to project folder:
+
+```
+cd daily-learning-streak-tracker
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run development server:
+
+```
+npm run dev
+```
+
+Open browser:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 🌐 Deployment
+
+This project is deployed on **Vercel**.
+
+Steps used:
+
+1. Push code to GitHub
+2. Connect GitHub repository to Vercel
+3. Deploy application
+4. Share live deployment link
+
+---
+
+# 🎯 Project Goal
+
+The goal of this project is to demonstrate:
+
+* Full stack development with Next.js
+* API route implementation
+* Streak tracking logic
+* Clean UI with Tailwind CSS
+* Simple but functional application deployment
+
+---
+
+# 👨‍💻 Author
+
+**Kiran Tanoor**
+
+GitHub:
+
+```
+https://github.com/tanoorkiran
+```
+
+---
+
+⭐ If you like this project, feel free to give it a star!
