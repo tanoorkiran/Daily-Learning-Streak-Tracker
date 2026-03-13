@@ -199,7 +199,7 @@ The application enforces the following rules:
 Clone the repository:
 
 ```
-git clone https://github.com/yourusername/daily-learning-streak-tracker
+git clone (https://github.com/tanoorkiran/Daily-Learning-Streak-Tracker.git)
 ```
 
 Go to project folder:
