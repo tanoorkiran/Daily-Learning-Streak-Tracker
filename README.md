@@ -13,7 +13,7 @@ This project demonstrates core **Full Stack Development skills using Next.js**.
 Vercel Deployment:
 
 ```
-https://vercel.com/tanoorkirans-projects/daily-learning-streak-tracker
+(https://daily-learning-streak-tracker.vercel.app)
 ```
 
 ---
@@ -102,23 +102,41 @@ Main technologies used:
 # 📂 Project Structure
 
 ```
-app
- ├ api
- │   ├ study
- │   ├ streak
- │   ├ history
- │
- ├ history
- │   └ page.tsx
- │
- ├ page.tsx
-
-components
- ├ StudyButton.tsx
- ├ StreakCalendar.tsx
-
-lib
- ├ streakLogic.ts
+streak-tracker
+│
+├── app
+│   ├── api
+│   │   ├── study
+│   │   │   └── route.ts
+│   │   ├── streak
+│   │   │   └── route.ts
+│   │   └── history
+│   │       └── route.ts
+│   │
+│   ├── history
+│   │   └── page.tsx
+│   │
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+│
+├── components
+│   ├── StudyButton.tsx
+│   ├── StreakCalendar.tsx
+│   └── StatCard.tsx
+│
+├── lib
+│   ├── streakLogic.ts
+│   └── storage.ts
+│
+├── public
+│
+├── package.json
+├── tsconfig.json
+├── tailwind.config.ts
+├── postcss.config.mjs
+├── next.config.ts
+└── README.md
 ```
 
 ---
