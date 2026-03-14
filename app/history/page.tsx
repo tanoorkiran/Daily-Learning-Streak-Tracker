@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function HistoryPage() {
+
   const [history, setHistory] = useState<string[]>([]);
 
   useEffect(() => {
@@ -12,8 +13,16 @@ export default function HistoryPage() {
       .then((data) => setHistory(data));
   }, []);
 
+  const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100">
+    <main className="min-h-screen flex items-center justify-center bg-sky-100">
 
       <div className="bg-white w-[420px] p-8 rounded-2xl shadow-xl">
 
@@ -27,14 +36,18 @@ export default function HistoryPage() {
           </p>
         ) : (
           <ul className="space-y-2 mb-6">
+
             {history.map((date, index) => (
+
               <li
                 key={index}
                 className="bg-gray-50 p-3 rounded-lg text-center"
               >
-                {date}
+                📅 {formatDate(date)}
               </li>
+
             ))}
+
           </ul>
         )}
 
