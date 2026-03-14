@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
+import { studyDates } from "@/lib/storage";
 import { calculateStreak } from "@/lib/streakLogic";
 
-let studyDates: string[] = [];
-
 export async function GET() {
+
   const streak = calculateStreak(studyDates);
 
   return NextResponse.json({

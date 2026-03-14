@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-
-let studyDates: string[] = [];
+import { studyDates } from "@/lib/storage";
 
 export async function GET() {
+
   const history = [...studyDates].reverse();
 
   return NextResponse.json(history);
